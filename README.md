@@ -11,7 +11,7 @@
 
 ## GitHub Actions: <https://github.com/ZuSolaris/basic-express-server/actions/new>
 
-## Production Deployment: Deployment currently in progress still talking to ryan about it
+## Production Deployment: Deployment currently in progress. Ryan instructed me to people
 
 ## Setup
 
@@ -30,3 +30,4 @@ Features
 /GET: Will retrieve data from a built in API.
 
 ![Resty WorkFlow](./Resty.PNG);
+
