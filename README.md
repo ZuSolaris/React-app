@@ -11,7 +11,8 @@
 
 ## GitHub Actions: <https://github.com/ZuSolaris/basic-express-server/actions/new>
 
-## Production Deployment: Deployment currently in progress. Ryan instructed me to people
+## Production Deployment: 
+https://resty-inc.netlify.app/
 
 ## Setup
 
