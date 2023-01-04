@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './form.scss';
 
 function Form(props) {
@@ -14,17 +15,17 @@ function Form(props) {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(handleSubmit)}>
         <label >
           <span>URL: </span>
-          <input name='url' type='text' />
+          <input onChange = {(e)=> props.setUrl(e.target.value)} name='url' type='text' />
           <button type="submit">GO!</button>
         </label>
         <label className="methods">
-          <span id="get">GET</span>
-          <span id="post">POST</span>
-          <span id="put">PUT</span>
-          <span id="delete">DELETE</span>
+          <button onClick = {(e)=> props.setMethod(e.target.id)} id="get">GET</button>
+          <button onClick = {(e)=> props.setMethod(e.target.id)}id="post">POST</button>
+          <button onClick = {(e)=> props.setMethod(e.target.id)}id="put">PUT</button>
+          <button onClick = {(e)=> props.setMethod(e.target.id)}id="delete">DELETE</button>
         </label>
       </form>
     </>

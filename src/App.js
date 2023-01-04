@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import '../src/App.scss';
 
@@ -9,40 +9,44 @@ import Footer from './components/footer';
 import Form from './components/form';
 import Results from './components/results';
 
-class App extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: null,
-      requestParams: {},
-    };
-  }
+function App(props) {
 
-  callApi = (requestParams) => {
-    // mock output
-    const data = {
-      count: 2,
-      results: [
-        {name: 'fake thing 1', url: 'http://fakethings.com/1'},
-        {name: 'fake thing 2', url: 'http://fakethings.com/2'},
-      ],
-    };
-    this.setState({data, requestParams});
-  }
 
-  render() {
-    return (
-      <React.Fragment>
-        <Header />
-        <div>Request Method: {this.state.requestParams.method}</div>
-        <div>URL: {this.state.requestParams.url}</div>
-        <Form handleApiCall={this.callApi} />
-        <Results data={this.state.data} />
-        <Footer />
-      </React.Fragment>
-    );
-  }
+  const [url, setUrl] = useState('');
+  const [method, setMethod] = useState('');
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+
+  const callApi = async (requestParams) => {
+    setLoading(true);
+    await setTimeout(
+      () => { const data = {
+        count: 2,
+        results: [
+          { name: 'fake thing 1', url: 'http://fakethings.com/1' },
+          { name: 'fake thing 2', url: 'http://fakethings.com/2' },
+        ],
+      };
+      setLoading(false);
+      setData(data);
+    }, 1000   
+    )
+
+  };
+
+
+  return (
+    <React.Fragment>
+      <Header />
+      <div>Request Method: {method}</div>
+      <div>URL: {url}</div>
+      <Form setUrl={setUrl} setMethod={setMethod} handleApiCall={callApi} />
+      <Results data={data} loading={loading} />
+      <Footer />
+    </React.Fragment>
+  );
 }
 
 export default App;
